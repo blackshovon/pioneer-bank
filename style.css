@@ -1,0 +1,10 @@
+body{
+    padding: 100px;
+}
+.bank-title {
+    text-align: center;
+    background-color: rgb(228, 135, 220);
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+}
