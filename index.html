@@ -1,26 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pioneer Bank</title>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   
-    <div class="login-area">
-        <h1 class="text-center">Welcome to Pioneer Bank</h1>
-        <div class="submit-area">
-            <h4>log in</h4>
-            <input type="text" name="" id="" class="form-control" placeholder="Email">
-            <br>
-            <input type="password" name="" id="" class="form-control" placeholder="Password">
-            <br>
-            <button class="btn btn-success">Enter</button>
-        </div>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-area">
+      <h1 class="text-center">Welcome to Pioneer Bank</h1>
+      <div class="submit-area">
+        <h4>log in</h4>
+        <input type="text" name="" class="form-control" placeholder="Email" />
+        <br />
+        <input
+          type="password"
+          name=""
+          class="form-control"
+          placeholder="Password"
+        />
+        <br />
+        <button class="btn btn-success" id="login">Enter</button>
+      </div>
     </div>
-</body>
+    <div id="transaction-area">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="diposit status">
+            <h5>Diposit</h5>
+            <h2>$<span id="current-diposit"> 00</span></h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="withdraw status">
+            <h5>Withdraw</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="balance status">
+            <h5>Balance</h5>
+            <h2>$ <span id="current-balance">1240</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Diposit</h4>
+            <input type="text" id="diposit-amount" class="form-control" placeholder="$ amount you want to diposit"/>
+            <br>
+            <button class="btn btn-success" id="add-diposit">Diposit</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Withdraw</h4>
+            <input type="text" class="form-control" placeholder="$ amount you want to withdraw" />
+            <br>
+            <button class="btn btn-success" id="">Withdraw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const loginbtn = document.getElementById("login");
+      loginbtn.addEventListener("click", function () {
+        const loginArea = document.getElementById("login-area");
+        loginArea.style.display = "none";
+        const transactionArea = document.getElementById("transaction-area");
+        transactionArea.style.display = "block";
+      });
+
+      const dipositBtn = document.getElementById("add-diposit")
+      dipositBtn.addEventListener("click" , function(){
+        const dipositAmount = document.getElementById("diposit-amount").value;
+        const dipositNumber = parseFloat(dipositAmount);
+        
+        // const currentDiposit = document.getElementById("current-diposit").innerText;
+        // const currentDipositNumber = parseFloat(currentDiposit);
+        // const totalDiposit = dipositNumber + currentDipositNumber;
+
+        // document.getElementById("current-diposit").innerText = totalDiposit;
+
+        updateSpanText("current-diposit" , dipositNumber)
+        updateSpanText("current-balance" , dipositNumber)
+
+        document.getElementById("diposit-amount").value="";
+      })
+      function updateSpanText(id , dipositNumber){
+        const current = document.getElementById(id).innerText;
+        const currentNumber = parseFloat(current);
+        const total = dipositNumber + currentNumber;
+
+        document.getElementById(id).innerText = total;
+      }
+
+    </script>
+  </body>
 </html>
